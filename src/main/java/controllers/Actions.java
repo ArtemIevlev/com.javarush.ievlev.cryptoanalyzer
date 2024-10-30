@@ -1,11 +1,13 @@
 package controllers;
 
 import comands.Action;
+import comands.Decode;
 import comands.Encode;
 import exception.AppException;
 
 public enum Actions {
-    ENCODER(new Encode());
+    ENCODER(new Encode()),
+    DECODER(new Decode());
 
     private final Action action;
     Actions(Action action) {

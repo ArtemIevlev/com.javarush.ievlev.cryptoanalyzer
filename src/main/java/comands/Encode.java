@@ -45,6 +45,7 @@ public class Encode implements Action {
             int newIndex = (indexInAlphabet + key) % Constants.ALPHABET.size();
             stringBuilder.append(Constants.ALPHABET.get(newIndex));
         }
+        stringBuilder.append('\n');
         return stringBuilder.toString();
     }
 }
