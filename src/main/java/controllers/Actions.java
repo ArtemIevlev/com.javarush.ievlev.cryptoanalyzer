@@ -1,13 +1,15 @@
 package controllers;
 
 import comands.Action;
+import comands.BrutForce;
 import comands.Decode;
 import comands.Encode;
 import exception.AppException;
 
 public enum Actions {
     ENCODER(new Encode()),
-    DECODER(new Decode());
+    DECODER(new Decode()),
+    BRUTFORCE(new BrutForce());
 
     private final Action action;
     Actions(Action action) {

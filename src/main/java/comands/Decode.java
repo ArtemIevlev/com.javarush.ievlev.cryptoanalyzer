@@ -1,6 +1,7 @@
 package comands;
 
 import entiti.Result;
+import entiti.ResultCode;
 import util.Constants;
 
 public class Decode implements Action{
@@ -8,7 +9,7 @@ public class Decode implements Action{
     public Result execute(String[] parameters) {
         Integer i = Constants.ALPHABET.size() - Integer.parseInt(parameters[2]);
         parameters[2] = i.toString();
-        Result execute = new Encode().execute(parameters);
-        return execute;
+        new Encode().execute(parameters);
+        return new Result("The decode was successful", ResultCode.OK);
     }
 }

@@ -3,6 +3,8 @@ package util;
 import entiti.FileManager;
 import exception.AppException;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ArgsMaker {
@@ -23,7 +25,8 @@ public class ArgsMaker {
             String[] args = makeDecoderArgs(sca);
             return args;
         } else if (mode.equalsIgnoreCase("bruteforce")) {
-            throw  new AppException("function not ready now");
+            String[] args = makeBrutForceArgs(sca);
+            return args;
         } else if (mode.equalsIgnoreCase("Analysis")) {
             throw  new AppException("function not ready now");
         }else {
@@ -63,6 +66,7 @@ public class ArgsMaker {
         String[] args = new String[4];
         args[0] = "decoder";
         while (true) {
+            System.out.println("__________________________");
             System.out.println("Write the full name of the file to decode");
             args[1] = sca.nextLine().trim();
             if (!FileManager.isFileExist(args[1])){
@@ -81,6 +85,25 @@ public class ArgsMaker {
                 Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
                 System.out.println("Is not a number");
+                continue;
+            }
+            return args;
+        }
+    }
+    private static String[] makeBrutForceArgs(Scanner sca){
+        String[] args = new String[3];
+        args[0] = "brutforce";
+        while (true){
+            System.out.println("Write the full name of the file to decode");
+            args[1] = sca.nextLine().trim();
+            if (!FileManager.isFileExist(args[1])){
+                System.out.println("File is not exist");
+                continue;
+            }
+            System.out.println("Write the full name of the package where to decode");
+            args[2] = sca.nextLine().trim();
+            if (!Files.isDirectory(Path.of(args[2]))){
+                System.out.println("Is not a directory");
                 continue;
             }
             return args;
