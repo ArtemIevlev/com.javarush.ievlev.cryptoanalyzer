@@ -13,7 +13,4 @@ public class FileManager {
         }
         return false;
     }
-    public static void makeFile (String path){
-
-    }
 }

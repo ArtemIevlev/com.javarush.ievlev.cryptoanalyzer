@@ -18,6 +18,7 @@ public class Encode implements Action {
         int key = Integer.parseInt(parameters[2]);
         return doResult(pathFileToEncrypt, pathFileToEncode, key);
     }
+
     private Result doResult(String fileToEncrypt, String fileToEncode, int key){
         key = key % Constants.ALPHABET.size();
 
@@ -32,19 +33,42 @@ public class Encode implements Action {
             throw new AppException(e);
         }
     }
+
+//    private String encode (String messageForCoding, int key){
+//        char[] charArray = messageForCoding.toCharArray();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (char c : charArray) {
+//            int indexInAlphabet = Constants.ALPHABET.indexOf(Character.valueOf(c));
+//            if (indexInAlphabet < 0){
+//                stringBuilder.append(c);
+//                continue;
+//            }
+//            int newIndex = (indexInAlphabet + key) % Constants.ALPHABET.size();
+//            stringBuilder.append(Constants.ALPHABET.get(newIndex));
+//        }
+//        stringBuilder.append('\n');
+//        return stringBuilder.toString();
+//    }
+
+    /**
+     * Encrypts the specified message to the specified key using the Caesar algorithm
+     * @param messageForCoding the String that needs to be encrypted
+     * @param key the key according to which the shift will be made {@code Constants.ALPHABET}
+     *
+     * @return the encrypted {@code String}
+     */
     private String encode (String messageForCoding, int key){
         char[] charArray = messageForCoding.toCharArray();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (char c : charArray) {
-            int indexInAlphabet = Constants.ALPHABET.indexOf(Character.valueOf(c));
+        char[] encodedArray = new char[charArray.length];
+        for (int i = 0; i < charArray.length; i++) {
+            int indexInAlphabet = Constants.ALPHABET.indexOf(Character.valueOf(charArray[i]));
             if (indexInAlphabet < 0){
-                stringBuilder.append(c);
+                encodedArray[i] = charArray[i];
                 continue;
             }
             int newIndex = (indexInAlphabet + key) % Constants.ALPHABET.size();
-            stringBuilder.append(Constants.ALPHABET.get(newIndex));
+            encodedArray[i] = Constants.ALPHABET.get(newIndex);
         }
-        stringBuilder.append('\n');
-        return stringBuilder.toString();
+        return new String(encodedArray) + "\n";
     }
 }
