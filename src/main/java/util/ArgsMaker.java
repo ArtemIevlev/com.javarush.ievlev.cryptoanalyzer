@@ -8,29 +8,23 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ArgsMaker {
-    public static String[] doArgs(){
-        Scanner sca = new Scanner(System.in);
-        System.out.println("""
+    private static final String MENU = """
                 Select the operating mode:
                 1. Encoder
                 2. Decoder
                 3. BruteForce
-                4.Analysis
-                """);
-        String mode = sca.nextLine();
-        if (mode.equalsIgnoreCase("encoder")){
-            String[] args = makeEncoderArgs(sca);
-            return args;
-        }else if (mode.equalsIgnoreCase("decoder")){
-            String[] args = makeDecoderArgs(sca);
-            return args;
-        } else if (mode.equalsIgnoreCase("bruteforce")) {
-            String[] args = makeBrutForceArgs(sca);
-            return args;
-        } else if (mode.equalsIgnoreCase("Analysis")) {
-            throw  new AppException("function not ready now");
-        }else {
-            throw new AppException("mode not found");
+                4. Analysis
+                """;
+    public static String[] doArgs(){
+        Scanner sca = new Scanner(System.in);
+        System.out.println(MENU);
+
+        switch (sca.nextLine().toLowerCase()){
+            case "encoder":  return makeEncoderArgs(sca);
+            case "decoder":  return makeDecoderArgs(sca);
+            case "bruteforce": return makeBrutForceArgs(sca);
+            case "analysis":  throw  new AppException("function not ready now");
+            default: throw new AppException("mode not found");
         }
     }
     private static String[] makeEncoderArgs(Scanner sca){
@@ -92,7 +86,7 @@ public class ArgsMaker {
     }
     private static String[] makeBrutForceArgs(Scanner sca){
         String[] args = new String[3];
-        args[0] = "brutforce";
+        args[0] = "bruteforce";
         while (true){
             System.out.println("Write the full name of the file to decode");
             args[1] = sca.nextLine().trim();

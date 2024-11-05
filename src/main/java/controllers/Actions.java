@@ -1,7 +1,7 @@
 package controllers;
 
 import comands.Action;
-import comands.BrutForce;
+import comands.BruteForce;
 import comands.Decode;
 import comands.Encode;
 import exception.AppException;
@@ -9,7 +9,7 @@ import exception.AppException;
 public enum Actions {
     ENCODER(new Encode()),
     DECODER(new Decode()),
-    BRUTFORCE(new BrutForce());
+    BRUTEFORCE(new BruteForce());
 
     private final Action action;
     Actions(Action action) {
