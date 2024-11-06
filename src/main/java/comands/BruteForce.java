@@ -13,13 +13,13 @@ public class BruteForce implements Action{
 
         new Validator("bruteforce").validate(parameters);
 
-        Encode encode = new Encode();
+        Decode encode = new Decode();
         String[] args = new String[3];
         args[0] = parameters[0];
         String pathOfFileToBrutForce = parameters[1];
         char separator = pathOfFileToBrutForce.charAt(0) == '/' ? '/': '\\';
         for (int key = 0; key < Constants.ALPHABET.size(); key++) {
-            args[1] = pathOfFileToBrutForce + separator + "brutForceKey"+ key;
+            args[1] = pathOfFileToBrutForce + separator + "brutForceKey"+ key +".txt";
             args[2] = Integer.valueOf(key).toString();
             encode.execute(args);
         }

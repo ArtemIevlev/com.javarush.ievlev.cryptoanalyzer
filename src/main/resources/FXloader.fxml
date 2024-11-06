@@ -22,20 +22,19 @@
                   </Label>
                   <Separator layoutX="82.0" layoutY="82.0" prefHeight="5.0" prefWidth="566.0" />
                   <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" onAction="#chooseFileToEncode" prefHeight="26.0" prefWidth="196.0" text="Выбрать файл для шифрования" />
-                  <TextField layoutX="92.0" layoutY="254.0" prefHeight="26.0" prefWidth="159.0" fx:id="encodeTextField" />
+                  <TextField fx:id="encodeTextField" layoutX="96.0" layoutY="254.0" prefHeight="26.0" prefWidth="159.0" />
                   <Label layoutX="56.0" layoutY="254.0" prefHeight="26.0" prefWidth="40.0" text="Ключ:">
                      <font>
                         <Font name="Cascadia Mono Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onEncodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать"
-                  fx:id="encodeButton"/>
+                  <Button fx:id="encodeButton" layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onEncodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать" />
                   <Label layoutX="282.0" layoutY="88.0" prefHeight="39.0" prefWidth="166.0" text="Шифрование" textOverrun="CLIP">
                      <font>
                         <Font name="Cascadia Mono Regular" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="56.0" layoutY="209.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="198.0" text="Выбрать файл для сохранения" onAction="#chooseFileToSave" />
+                  <Button layoutX="56.0" layoutY="209.0" mnemonicParsing="false" onAction="#chooseFileToSave" prefHeight="26.0" prefWidth="198.0" text="Выбрать файл для сохранения" />
                </children>
             </AnchorPane>
       </content>
@@ -50,18 +49,19 @@
                      </font>
                   </Label>
                   <Separator layoutX="82.0" layoutY="82.0" prefHeight="5.0" prefWidth="566.0" />
-                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Выбрать файл" />
-                  <TextField layoutX="95.0" layoutY="215.0" />
-                  <Label layoutX="56.0" layoutY="215.0" prefHeight="26.0" prefWidth="40.0" text="Ключ:">
+                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" text="Выбрать файл для дешифрования" onAction="#chooseFileToEncode" />
+                  <TextField layoutX="96.0" layoutY="254.0" prefHeight="26.0" prefWidth="170.0" fx:id="decodeTextField" />
+                  <Label layoutX="56.0" layoutY="254.0" prefHeight="26.0" prefWidth="40.0" text="Ключ:">
                      <font>
                         <Font name="Cascadia Mono Regular" size="13.0" />
                      </font></Label>
-                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onDecodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать" />
+                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onDecodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Дешифровать" fx:id="decodeButton" />
                   <Label layoutX="267.0" layoutY="88.0" prefHeight="39.0" prefWidth="198.0" text="Дешифрование" textAlignment="CENTER" textOverrun="CLIP">
                      <font>
                         <Font name="Cascadia Mono Regular" size="28.0" />
                      </font>
                   </Label>
+                  <Button layoutX="56.0" layoutY="209.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" text="Выбрать файл для сохранения" onAction="#chooseFileToSave" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -75,14 +75,14 @@
                      </font>
                   </Label>
                   <Separator layoutX="82.0" layoutY="82.0" prefHeight="5.0" prefWidth="566.0" />
-                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" text="Выбрать файл для шифрования" />
-                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onDecodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать" />
+                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" text="Выбрать файл для дешифрования" onAction="#chooseFileToEncode" />
+                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onBruteForceButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Расшифровать" fx:id="bruteForceButton" />
                   <Label layoutX="274.0" layoutY="88.0" prefHeight="39.0" prefWidth="184.0" text="Brute Force" textAlignment="CENTER" textOverrun="CLIP">
                      <font>
                         <Font name="Cascadia Mono Regular" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="56.0" layoutY="222.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Выбрать директорию для файлов" />
+                  <Button layoutX="56.0" layoutY="222.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Выбрать директорию для файлов" onAction="#chooseDirectoryToSave"/>
                </children>
             </AnchorPane>
         </content>

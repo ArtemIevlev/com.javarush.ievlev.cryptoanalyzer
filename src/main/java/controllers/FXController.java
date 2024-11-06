@@ -6,6 +6,7 @@ import entiti.ResultCode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -15,9 +16,16 @@ public class FXController {
     private String[] args;
     @FXML
     private Button encodeButton;
+    @FXML
+    private Button decodeButton;
+    @FXML
+    private Button bruteForceButton;
+
 
     @FXML
     private TextField encodeTextField;
+    @FXML
+    private TextField decodeTextField;
 
     @FXML
     protected void selectEncode(){
@@ -27,10 +35,12 @@ public class FXController {
     @FXML
     protected void selectDecode(){
         args = new String[3];
+        decodeButton.setText("Расшифровать");
     }
     @FXML
     protected void selectBruteForce(){
         args = new String[2];
+
     }
 
     @FXML
@@ -54,6 +64,14 @@ public class FXController {
         }
     }
     @FXML
+    protected void chooseDirectoryToSave(){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File directory = directoryChooser.showDialog(null);
+        if (directory != null) {
+            args[1] = directory.getAbsolutePath();
+        }
+    }
+    @FXML
     protected void onEncodeButtonClick(){
         args[2] = encodeTextField.getText();
         Action action = Actions.find("encoder");
@@ -64,7 +82,21 @@ public class FXController {
     }
     @FXML
     protected void onDecodeButtonClick(){
-
+        args[2] = decodeTextField.getText();
+        Action action = Actions.find("decoder");
+        Result execute = action.execute(args);
+        if (execute.getResultCode() == ResultCode.OK){
+            decodeButton.setText("Успешно!");
+        }
     }
+    @FXML
+    protected void onBruteForceButtonClick(){
+        Action action = Actions.find("bruteForce");
+        Result execute = action.execute(args);
+        if (execute.getResultCode() == ResultCode.OK){
+            bruteForceButton.setText("Успешно!");
+        }
+    }
+
 
 }
