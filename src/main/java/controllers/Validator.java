@@ -32,7 +32,9 @@ public class Validator {
             throw new AppException("File not found", new FileNotFoundException());
         }
         try {
-            Integer.parseInt(parameters[2]);
+            if (Integer.parseInt(parameters[2]) < 0) {
+                throw new AppException("The key cannot be negative");
+            }
         } catch (NumberFormatException e) {
             throw new AppException("Not valid Key",e);
         }

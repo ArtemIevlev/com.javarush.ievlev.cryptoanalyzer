@@ -1,5 +1,6 @@
 package comands;
 
+import controllers.Validator;
 import entiti.Result;
 import entiti.ResultCode;
 import exception.AppException;
@@ -13,6 +14,7 @@ import java.nio.file.Path;
 public class Encode implements Action {
     @Override
     public Result execute(String[] parameters) {
+        new Validator("encoder").validate(parameters);
         String pathFileToEncrypt = parameters[0];
         String pathFileToEncode = parameters[1];
         int key = Integer.parseInt(parameters[2]);

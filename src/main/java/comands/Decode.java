@@ -1,5 +1,6 @@
 package comands;
 
+import controllers.Validator;
 import entiti.Result;
 import entiti.ResultCode;
 import util.Constants;
@@ -7,6 +8,7 @@ import util.Constants;
 public class Decode implements Action{
     @Override
     public Result execute(String[] parameters) {
+        new Validator("decoder").validate(parameters);
         Integer i = Constants.ALPHABET.size() - Integer.parseInt(parameters[2]);
         parameters[2] = i.toString();
         new Encode().execute(parameters);

@@ -10,8 +10,8 @@
 <?import javafx.scene.text.Font?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="732.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXController">
-  <tabs>
-    <Tab text="Шифрование">
+    <tabs>
+    <Tab onSelectionChanged="#selectEncode" text="Шифрование">
       <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -21,24 +21,26 @@
                      </font>
                   </Label>
                   <Separator layoutX="82.0" layoutY="82.0" prefHeight="5.0" prefWidth="566.0" />
-                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Выбрать файл" />
-                  <TextField layoutX="95.0" layoutY="215.0" />
-                  <Label layoutX="56.0" layoutY="215.0" prefHeight="26.0" prefWidth="40.0" text="Ключ:">
+                  <Button layoutX="56.0" layoutY="159.0" mnemonicParsing="false" onAction="#chooseFileToEncode" prefHeight="26.0" prefWidth="196.0" text="Выбрать файл для шифрования" />
+                  <TextField layoutX="92.0" layoutY="254.0" prefHeight="26.0" prefWidth="159.0" fx:id="encodeTextField" />
+                  <Label layoutX="56.0" layoutY="254.0" prefHeight="26.0" prefWidth="40.0" text="Ключ:">
                      <font>
                         <Font name="Cascadia Mono Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onDecodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать" />
+                  <Button layoutX="306.0" layoutY="341.0" mnemonicParsing="false" onAction="#onEncodeButtonClick" prefHeight="42.0" prefWidth="120.0" text=" Зашифровать"
+                  fx:id="encodeButton"/>
                   <Label layoutX="282.0" layoutY="88.0" prefHeight="39.0" prefWidth="166.0" text="Шифрование" textOverrun="CLIP">
                      <font>
                         <Font name="Cascadia Mono Regular" size="28.0" />
                      </font>
                   </Label>
+                  <Button layoutX="56.0" layoutY="209.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="198.0" text="Выбрать файл для сохранения" onAction="#chooseFileToSave" />
                </children>
             </AnchorPane>
       </content>
     </Tab>
-    <Tab text="Дешифрование">
+    <Tab onSelectionChanged="#selectDecode" text="Дешифрование">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -63,7 +65,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="BruteForce">
+      <Tab onSelectionChanged="#selectBruteForce" text="BruteForce">
         <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

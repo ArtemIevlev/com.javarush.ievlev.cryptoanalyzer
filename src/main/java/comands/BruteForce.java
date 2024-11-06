@@ -1,5 +1,6 @@
 package comands;
 
+import controllers.Validator;
 import entiti.Result;
 import entiti.ResultCode;
 import util.Constants;
@@ -9,8 +10,10 @@ public class BruteForce implements Action{
     //Не тупи и нормально реши проблемы с путем для создания файлов в зависимости от системы
     @Override
     public Result execute(String[] parameters) {
-        Encode encode = new Encode();
 
+        new Validator("bruteforce").validate(parameters);
+
+        Encode encode = new Encode();
         String[] args = new String[3];
         args[0] = parameters[0];
         String pathOfFileToBrutForce = parameters[1];

@@ -8,6 +8,9 @@ public class Result {
         this.massage = massage;
         this.resultCode = resultCode;
     }
+    public ResultCode getResultCode() {
+        return resultCode;
+    }
 
     @Override
     public String toString() {
